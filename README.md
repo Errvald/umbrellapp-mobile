@@ -1,7 +1,7 @@
 umbrellapp 
 =====================
 
-umbrellapp is mobile app built with Ionic2 that shows a 5-day weather forecast at any given moment for any city.
+umbrellapp is a 5-day weather forecast mobile app built with Ionic2.
 
 <img src="http://i.imgur.com/hd41MbW.png" width="281"> <img src="http://i.imgur.com/AH1KFHT.png" width="281">
 
