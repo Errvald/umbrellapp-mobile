@@ -1,0 +1,156 @@
+.intro-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    z-index: 2;
+
+    .brand {
+        h4 {
+            margin: 30px 0;
+        }
+    } 
+
+    .identity {
+        padding-bottom: 7vh;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    &.hide-brand{
+        animation: FadeOutLeft 1.8s ease;
+        animation-fill-mode: forwards;
+        // .brand{
+        //     .icon{
+        //         animation: FadeOutLeft 2.3s ease;
+        //         animation-fill-mode: forwards;
+        //     }
+        //     h4{
+        //         animation: FadeOutLeft 2.3s ease .4s;
+        //         animation-fill-mode: forwards;
+        //     }
+        // }
+
+        // .identity {
+        //     animation: FadeOutLeft 2.3s ease .8s;
+        //     animation-fill-mode: forwards;
+        // }
+    }
+
+}
+
+.clouds{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: color($colors, text);
+    z-index: 0;
+}
+
+$cloudWallWidth: 298px;
+.cloud-wall--bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation: cloudsToRight 1.5s ease-in;
+    animation-fill-mode: forwards;
+    background-color: currentColor;
+     > svg {
+         transform: translateX(-$cloudWallWidth);
+         height: 100%;
+     }
+}
+$cloudOffset: -150px;
+.icon-cloud {
+    position: absolute;
+    transform: translateX($cloudOffset);
+    animation: cloudsToRightBack 1.6s ease-in;
+    animation-fill-mode: forwards;
+}
+
+#cloud,
+#cloud-block{
+    fill: currentColor;
+}
+
+.icon-cloud--xs > svg {
+    transform: scale(.3,.3);
+}
+
+.icon-cloud--sm > svg {
+    transform: scale(.4,.4);
+}
+
+.icon-cloud--md > svg {
+    transform: scale(.5,.5);
+}
+
+.icon-cloud--lg > svg {
+    transform: scale(.7,.7);
+}
+
+.icon-cloud:nth-child(1),
+.icon-cloud:nth-child(8){
+    top: 10%;
+    opacity: .7;
+}
+
+.icon-cloud:nth-child(2),
+.icon-cloud:nth-child(9){
+    top: 15%;
+    opacity: .7;
+}
+
+.icon-cloud:nth-child(3),
+.icon-cloud:nth-child(10){
+    top: 25%;
+    opacity: .9;
+}
+
+.icon-cloud:nth-child(4){
+    top: 40%;
+    opacity: .8;
+}
+
+.icon-cloud:nth-child(5){
+    top: 55%;
+    opacity: .6;
+}
+
+.icon-cloud:nth-child(6){
+    top: 70%;
+    opacity: .75;
+}
+
+.icon-cloud:nth-child(7){
+    top: 90%;
+    opacity: .9;
+}
+
+@keyframes cloudsToRightBack{
+    from{
+        transform: translateX($cloudOffset);
+    }
+    to{
+        transform: translateX(100%) translateX(150px);
+    }
+}
+
+@keyframes cloudsToRight{
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(100%) translateX($cloudWallWidth);
+    }
+}

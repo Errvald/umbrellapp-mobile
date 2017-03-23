@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar class="anim-FIUD">
+    <ion-buttons start>
+      <button (tap)="showFavoritesPage()" color="greenish" ion-button icon-only clear>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      <button (tap)="showSearchPage()" color="greenish" ion-button icon-only clear>
+        <ion-icon name="app" color="text"></ion-icon>
+      </button>
+    </ion-title>
+    <ion-buttons end>
+      <button (tap)="toggleFavorite()" ion-button icon-only clear>
+        <ion-icon [ngClass]="{'favored': favored.status}" [name]="favored.icon"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div *ngIf="city" [ngClass]="{'anim-FIUD speed-10': weekdays}" class="today">
+        <h1>TODAY</h1>
+        <h2>{{ city.name }}, {{ city.country}}</h2>
+        <day [day]="city.forecast[0]"></day>
+    </div>
+
+    <div [ngClass]="{'anim-FIR delay-15': weekdays}" class="weekdays">
+      <ion-slides #slider slidesPerView="4" spaceBetween="40">
+        <ng-container *ngIf="city">
+          <ion-slide *ngFor="let day of city.forecast | slice:1:6">
+            <day [day]="day"></day>
+          </ion-slide>
+        </ng-container>
+      </ion-slides>
+    </div>
+
+</ion-content>
+
+
+
+
+
+
+
+

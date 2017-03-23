@@ -1,0 +1,56 @@
+.button-group {
+    display: flex;
+    justify-content: center;
+
+    button {
+        margin-left: 0;
+        margin-right: 0;
+
+        .icon{
+            font-size: 18px;
+        }
+
+        &:first-child {
+            border-right: dashed 1px;
+        }
+
+        &:last-child{
+            border-left: none;
+        }
+    }
+}
+
+.button-ios-greenish{
+    color: color($colors, purplish);
+}
+
+.button--spinner{
+    transition: width .4s, border-radius .4s;
+    margin: 0 auto;
+    transition-timing-function: cubic-bezier(0.7, -0.51, 0.35, 1.63);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+
+    .button--spinner-label{
+        transition: opacity .2s;
+    }
+
+    ion-spinner{
+        position: absolute;
+        opacity: 0;
+    }
+
+    &.button--loading{
+        border-radius: 56px;
+        width: 56px;
+        margin: 0 auto;
+
+        .button--spinner-label {
+            opacity: 0;
+        }
+        ion-spinner{
+            opacity: 1;
+        }
+    } 
+    
+
+}

@@ -1,0 +1,4 @@
+$biko-path: $font-path+'/biko/subset-Biko';
+
+@include font-face("Biko", $biko-path);
+@include font-face("Biko", $biko-path+'-Bold', bold);

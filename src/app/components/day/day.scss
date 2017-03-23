@@ -1,0 +1,31 @@
+day{
+    text-align: center;
+    font-size: .9em;
+    letter-spacing: 1px;
+
+    .day-date{
+        text-transform: uppercase;
+    }
+
+    .day-temp {
+        font-weight: bold;
+        width: 45px;
+        margin: 0 auto;
+        color: color($colors, greenish);
+        > .minus::first-letter {
+            margin-left: -10px;
+        }
+        span {
+            float: right;
+        }
+        > div:last-child{
+            opacity: .6;
+            margin-top: 5px;
+        }
+    }
+
+    .day-condition{
+        color: color($colors, purplish);
+    }
+
+}

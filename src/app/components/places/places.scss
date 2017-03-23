@@ -1,0 +1,145 @@
+
+$darkerColor: darken(color($colors, purplish),2%);
+$inputHeight: 60px;
+
+place-input{
+    background-color: $darkerColor;
+    color: black;
+    display: block;
+    margin-bottom: $inputHeight;
+    box-shadow: 0 15px 25px rgba($darkerColor, 0.4);
+    font-size: 18px;
+
+    .place-input-container {
+        display: flex;
+        height: $inputHeight;
+        background-color: color($colors, purplish);
+        transition: box-shadow .3s ease-in-out;
+        box-shadow: 0 0 0 0px color($colors, purplish);
+
+        &:active{
+            box-shadow: 0 0 0 10px color($colors, purplish);
+        }
+
+        input {
+            background-color: transparent;
+            border: none;
+            padding: 0 15px;
+            flex: 1;
+        }
+    }
+
+    .place-input-icon {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        color: white;
+        font-size: 1.5em;
+        position: relative;
+        width: $inputHeight;
+        justify-content: center;
+
+        > * {
+            position: absolute;
+            transition: all .15s;
+            font-size: 18px;
+        }
+
+         > *:last-child,
+         *:nth-child(2),
+         &.search-loading > *:first-child,
+         &.search-done > *:first-child{
+             opacity: 0;
+             z-index: 0;
+             transform: translateX(15px);
+         }
+
+         &.search-loading > *:last-child,
+         &.search-done > *:nth-child(2){ 
+             opacity: 1;
+             z-index: 1;
+             transform: translateX(0px);
+        }
+
+    }
+
+    .place-results {
+        display: flex;
+        flex-direction: column;
+
+        .place-results_item {
+            padding: 0 15px;
+            height: $inputHeight;
+            line-height: $inputHeight;
+            color: color($colors, greenish);
+            white-space: pre;
+            position:relative;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:after{
+                content:"";
+                position: absolute;
+                right:0;
+                top:0;
+                bottom: 0;
+                width: 60%;
+                background: linear-gradient(to right, rgba(color($colors, purplish), 0) , color($colors, purplish));
+            }
+            &:active {
+                background-color: darken(color($colors, purplish),4%);
+            }
+            > span{
+                color: rgba(white, 0.8);
+                font-size: 16px;
+            }
+        }
+    }
+
+    &.outline {
+        margin-bottom: 15px;
+        border-radius: 4px;
+        background-color: transparent;
+        box-shadow: none;
+        border: dashed 2px color($colors, purplish);
+        color: color($colors, purplish);
+
+        .place-input-icon {
+            color: color($colors, purplish);
+            .spinner circle{
+                stroke: color($colors, purplish);
+            }
+        }
+
+        .place-input-container{
+            border-radius: 4px;
+            background-color: transparent;
+
+            &.place-input-container:active {
+                box-shadow: none;
+            }
+
+            input{
+                color: color($colors, purplish);
+            }
+        }
+
+        .place-results {
+             .place-results_item {
+                color: color($colors, purplish);
+                &:after {
+                    background: linear-gradient(to right, rgba(color($colors, greenish), 0), color($colors, greenish));
+                }
+                span {
+                    color: rgba(6, 6, 6, 0.46);
+                }
+             }
+        }
+
+        input::-webkit-input-placeholder { 
+            @include placeholder-style(color($colors, purplish));
+        }
+
+    }
+
+}

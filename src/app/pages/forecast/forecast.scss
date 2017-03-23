@@ -1,0 +1,66 @@
+
+page-forecast{
+
+    .scroll-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .today{
+        display: flex;
+        flex-direction: column;
+        flex: 4 1 auto;
+        justify-content: center;
+        align-items: center;
+
+        h1{
+            color: color($colors, greenish);
+            opacity: .7;
+        }
+
+        day{
+            font-size: 2em;
+        }
+
+        .day-date{
+            display: none;
+        }
+
+        .day-temp {
+            width: 75px;
+        }
+
+        .condition {
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    .weekdays{
+        flex: 3 1 auto;
+    }
+
+    .swiper-slide {
+        opacity: .2;
+        transform: scale(.5,.5);
+        transition: all .3s;
+    }
+
+    .swiper-slide-prev,
+    .swiper-slide-next{
+        opacity: .6;
+        transform: scale(.9,.9);
+    }
+
+    .swiper-slide-active {
+        opacity: 1;
+        transform: scale(1,1);
+    }
+
+}
+
+.favored{
+    transition: color .2s;
+    animation: zoom .2s ease-in;
+    color: color($colors, greenish);
+}

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="anim-FIUD delay-10">
+    <ion-buttons start>
+      <button (tap)="showFavoritesPage()" color="reddishdark" ion-button icon-only clear>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>
+      <button color="reddishdark" ion-button icon-only clear>
+          <ion-icon name="app"></ion-icon>
+        </button>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row nowrap justify-content-center>
+      <ion-col col-10>
+        <div class="search-content">
+
+          <!-- Search city with autocomplete -->
+          <div class="fade-up delay-2">
+            <h2>type a location:</h2>
+            <place-input (func)="selectCity($event)"></place-input>
+          </div>
+
+          <!-- Get device geolocation -->
+          <div text-center class="device-location fade-up delay-5">
+            <h2>or give us your location</h2>
+
+            <!-- Stored device geolocation -->
+            <div *ngIf="isLocated" [@fadeOutX]="clearing" class="button-group">
+              <button color="text" ion-button outline icon-right (tap)="getLocatedCity()">
+              {{ locatedCity.name }}, {{ locatedCity.country }}
+            </button>
+              <button (tap)="clearLocation()" color="text" ion-button outline>
+              <ion-icon name="close"></ion-icon>
+            </button>
+            </div>
+
+            <button *ngIf="!isLocated" [@fadeInX] ion-button block icon-left color="greenish" [ngClass]="{'button--loading': tracking }"
+              class="button--spinner" (tap)="getMyLocation()">
+              <span class="button--spinner-label">
+                <ion-icon name="location"></ion-icon>
+                access location
+              </span>
+              <ion-spinner name="crescent" color="purplish"></ion-spinner>
+            </button>
+
+
+          </div>
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

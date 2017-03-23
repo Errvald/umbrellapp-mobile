@@ -1,0 +1,13 @@
+<div class="place-input-container">
+    <input class="place-input" debounce [delay]="700" (func)="search()" 
+[(ngModel)]="place" placeholder="search..">
+    <div class="place-input-icon" [ngClass]="{ 'search-done': isDone, 'search-loading': isLoading }">
+        <ion-icon name="search"></ion-icon>
+        <ion-icon name="close" (click)="cancelSearch()"></ion-icon>
+        <ion-spinner name="crescent" color="light"></ion-spinner>
+    </div>
+</div>
+<div *ngIf="places" class="place-results">
+    <div *ngFor="let place of places" [@fadeInX] (click)="selectPlace(place)" 
+    class="place-results_item">{{ place.name }} <span>{{ place.country}}</span></div>
+</div>

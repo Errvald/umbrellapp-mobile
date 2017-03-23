@@ -1,0 +1,8 @@
+<div class="day-date">{{ day.date}}</div>
+<div class="day-condition">
+    <weather-condition [icon]="day.icon"></weather-condition>
+</div>
+<div class="day-temp">
+    <div [ngClass]="{'minus': day.max_temp < 0}">{{ day.max_temp }} <span>°C</span></div>
+    <div [ngClass]="{'minus': day.min_temp < 0}">{{ day.min_temp }} <span>°C</span></div>
+</div>

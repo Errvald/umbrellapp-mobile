@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar class="anim-FIUD">
+        <ion-buttons start>
+            <button (tap)="goBack()" color="purplish" ion-button icon-only clear>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+    <ion-row nowrap justify-content-center>
+    <ion-col col-10>
+        <h2 text-left>Your favorite locations</h2>
+        <place-input (func)="addToFavorites($event)" class="outline"></place-input>
+        
+        <div class="favorites-list">
+            <div *ngFor="let fav of favorites | orderBy: 'name'" [@fadeInOutX]>
+                <div (tap)="selectCity(fav)">{{ fav.name }}, {{ fav.country }}</div>
+                <button (tap)="removeFavorite(fav)" color="purplish" ion-button icon-only clear end>
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </div>
+        </div>
+
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    
+</ion-content>
+
+
+<div *ngIf="toastOpen" [@fadeInYBottom] class="toast">
+    <div class="toast-content">You deleted a favorite 
+        <br>you can <span (tap)="undoAction()">undo this action</span></div>
+    <ion-icon name="close" (tap)="closeToast()"></ion-icon>
+</div>

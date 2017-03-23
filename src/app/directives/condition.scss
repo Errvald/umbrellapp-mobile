@@ -1,0 +1,129 @@
+.condition{
+    width: 50px;
+    height: 50px;
+    color: currentColor;
+    margin-bottom: 1rem;
+
+    path{
+        fill: white;
+    }
+}
+
+.sun-container {transform: scale(.8,.8);}
+.sun{
+    transform-origin: center center;
+    animation: rotating 10s linear;
+    animation-iteration-count: infinite;
+}
+.moon-container {
+    transform: translateX(11rem) translateY(-1rem) scale(.8,.8);
+}
+.moon{
+    transform-origin: 20% top;
+    animation: hanging 5s linear;
+    animation-iteration-count: infinite;
+}
+
+.cloud{
+
+    > path:last-child{
+        fill: currentColor;
+    }
+
+    &.cloud-bottom{
+        transform: translateY(6rem);
+    }
+
+    &.cloud-top {
+        transform: translateY(-6rem);
+    }
+
+    &.cloud-smaller {
+        transform: scale(.75,.75) translate(7rem, -5rem);
+
+        path{
+            animation: sideways 5s linear;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+
+
+.thunder {
+    animation: storm 1.5s linear;
+    animation-iteration-count: infinite;
+}
+
+.rain-drop-1,.rain-drop-2,.rain-drop-3{
+    animation: raining .5s linear;
+    animation-iteration-count: infinite;
+}
+
+.rain-drop-2{
+    animation-delay: .2s;
+}
+
+.rain-drop-3{
+    animation-delay: .3s;
+}
+
+.snowflake-01,.snowflake-02,.snowflake-03{
+    transform:  scale(.6,.6);
+    transform-origin: center center;
+    animation: snowing 3.5s linear;
+    animation-iteration-count: infinite;
+}
+
+.snowflake-01{
+    animation-delay: .5s;
+}
+
+.snowflake-03{
+    animation-delay: .9s;
+}
+
+@keyframes storm{
+    0%{ transform: translateY();opacity: 0; }
+    5%{ transform: translateY(7rem); opacity: 1; }
+    10%{ transform: translateY(7.2rem); opacity: 0; }
+    15%{ transform: translateY(7.4rem); opacity: 1; }
+    90%{ transform: translateY(7.4rem); opacity: 1; }
+    100%{ transform: translateY(8rem); opacity: 0;}
+}
+
+@keyframes raining{
+    0%{ transform: translateY();opacity: 1; }
+    80%{ transform: translateY(20vh); opacity: 1; }
+    100%{ transform: translateY(40vh); opacity: 0;}
+}
+
+@keyframes snowing{
+    0%{ transform: translateY() rotate() scale(.6,.6); opacity: 1; }
+    25%{ transform: translateY(5vh) translateX(2rem) rotate(90deg) scale(.6,.6); opacity: 1; }
+    50%{ transform: translateY(15vh) translateX(-2rem) rotate(180deg) scale(.6,.6); opacity: 1; }
+    75%{ transform: translateY(20vh) translateX(2rem) rotate(288deg) scale(.6,.6); opacity: 1; }
+    100%{ transform: translateY(32vh) translateX(-2rem) rotate(360deg) scale(.6,.6); opacity: 0;}
+}
+
+@keyframes rotating{
+    from{ transform: rotate(); }
+    to{ transform: rotate(360deg); }
+}
+
+@keyframes hanging{
+    0%{ transform: rotate(); }
+    25%{ transform: rotate(15deg); }
+    50%{ transform: rotate();}
+    75%{ transform: rotate(-15deg); }
+    100%{ transform: rotate(); }
+}
+
+@keyframes sideways{
+    0%{ transform: translateX(); }
+    25%{ transform: translateX(2rem); }
+    50%{ transform: translateX();}
+    75%{ transform: translateX(-2rem); }
+    100%{ transform: translateX(); }
+}
+

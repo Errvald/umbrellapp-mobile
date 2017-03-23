@@ -1,0 +1,82 @@
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+@mixin placeholder-style($color: "" ) {
+    font-size: 18px;
+		color: $color;
+}
+
+@mixin animation-delays($delay_list) {
+  @each $delay in $delay_list{
+    .delay-#{$delay} {
+        animation-delay: #{$delay / 10}s;
+    }
+  }
+}
+
+@mixin animation-speeds($speed_list) {
+  @each $speed in $speed_list{
+    .speed-#{$speed} {
+        animation-duration: #{$speed / 10 }s;
+    }
+  }
+}
+
+// =============================================================================
+// Make Font Icon
+// =============================================================================
+
+@mixin makeIcon($arg, $val) {
+  .ion-ios-#{$arg}:before ,
+  .ion-ios-#{$arg}-circle:before ,
+  .ion-ios-#{$arg}-circle-outline:before ,
+  .ion-ios-#{$arg}-outline:before ,
+  .ion-md-#{$arg}:before ,
+  .ion-md-#{$arg}-circle:before ,
+  .ion-md-#{$arg}-circle-outline:before ,
+  .ion-md-#{$arg}-outline:before  {
+    content: $val;
+    font-size: 1em;
+  }
+}

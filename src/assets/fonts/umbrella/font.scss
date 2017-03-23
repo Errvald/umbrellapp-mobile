@@ -1,0 +1,27 @@
+$umbrella-path: $font-path+'/umbrella/umbrella';
+@include font-face("Umbrella", $umbrella-path);
+
+[class^="icon-"],
+[class*=" icon-"],
+[class^="ion-ios-icon"],
+[class*="ion-ios-icon"],
+[class^="ion-md-icon"],
+[class*="ion-md-icon"]{
+  font-family: 'Umbrella' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+@include makeIcon(heart, '\e900');
+@include makeIcon(menu, '\e901');
+@include makeIcon(close, '\e902');
+@include makeIcon(app, '\e903');
+@include makeIcon(search, '\e904');
+@include makeIcon(location, '\e905');

@@ -1,0 +1,16 @@
+{
+  "name": "ionic2-app-base",
+  "app_id": "",
+  "typescript": true,
+  "v2": true,
+  "proxies": [
+    {
+        "path": "/weather",
+        "proxyUrl": "http://api.openweathermap.org"
+    },
+    {
+        "path": "/places",
+        "proxyUrl": "https://maps.googleapis.com"
+    }
+]
+}

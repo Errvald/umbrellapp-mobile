@@ -1,0 +1,156 @@
+@import '../theme/buttons';
+
+h2 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.large-icon {
+    font-size: 5em;
+}
+
+.ion-page{
+    background-color: inherit;
+}
+
+// =============================================================================
+// Page Vackground-Color Transitions
+// =============================================================================
+
+ion-nav{
+    transition: background-color .4s;
+    &.intro{
+        background-color: color($colors, reddish);
+    }
+    &.search{
+        background-color: color($colors, reddish);
+    }
+    &.favorites{
+        background-color: color($colors, greenish);
+    }
+    &.forecast{
+        background-color: color($colors, purplish);
+    }
+}
+
+// =============================================================================
+// Input + Placeholders
+// =============================================================================
+input{
+    color: $text-color;
+}
+
+input::-webkit-input-placeholder { 
+   @include placeholder-style(rgba(255,255,255,0.5));
+}
+
+
+// =============================================================================
+// Animations
+// =============================================================================
+.fade-up{
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp .3s ease-out;
+  animation-fill-mode:forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.anim-FIL{
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: FadeInLeft .4s ease-out;
+  animation-fill-mode:forwards;
+}
+
+@keyframes FadeInLeft{
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes FadeOutLeft{
+  0% {
+    opacity: 1;
+    transform: translateX();
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.anim-FIUD{
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: FadeInUpDown .2s ease-out;
+  animation-fill-mode:forwards;
+}
+
+@keyframes FadeInUpDown{
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-FIR{
+  opacity: 0;
+  transform: translateX(50px);
+  animation: FadeInRight .4s ease-out;
+  animation-fill-mode:forwards;
+}
+
+@keyframes FadeInRight{
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoom{
+  0% {
+    transform: scale(1,1);
+  }
+  74% {
+    transform: scale(1.4,1.4);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+// =============================================================================
+// Animation Delays
+// =============================================================================
+$delay_list: 2 3 4 5 6 8 9 10 15 20 25;
+@include animation-delays($delay_list);
+
+// =============================================================================
+// Animation Speed
+// =============================================================================
+$speed_list: 5 8 10 15 20 25 30 35;
+@include animation-speeds($speed_list);
